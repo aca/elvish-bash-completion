@@ -74,7 +74,10 @@ fi
 
 COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
-printf ''%s\n'' "${COMPREPLY[@]}"
+for i in "${COMPREPLY[@]}"
+do
+	eval echo $i
+done
 ' | bash --norc --noprofile -s $completion_filename $bash_function (- (count $cmd) 1) $@cmd | from-lines | each {|n| str:trim-space $n} )]
     var prefix = $cmd[-1]
     if (eq $completions ['']) {
