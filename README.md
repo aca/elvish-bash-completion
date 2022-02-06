@@ -28,12 +28,12 @@ set edit:completion:arg-completer[killall] = (bash-completer:new "killall")
 set edit:completion:arg-completer[aria2c] = (bash-completer:new "aria2c")
 set edit:completion:arg-completer[journalctl] = (bash-completer:new "journalctl")
 
-# some commands need bash_function to be set
+# for some commands, we need to pass bash_function
 set edit:completion:arg-completer[pkill] = (bash-completer:new "pkill" &bash_function="pgrep")
 set edit:completion:arg-completer[gh] = (bash-completer:new "gh" &bash_function="__start_gh")
 set edit:completion:arg-completer[git] = (bash-completer:new "git" &bash_function="__git_wrap__git_main")
-
-# some completion functions needs to pass argument
+set edit:completion:arg-completer[tcpdump] = (bash-completer:new "tcpdump" &bash_function="_tcpdump tcpdump")
+set edit:completion:arg-completer[umount] = (bash-completer:new "umount" &bash_function="_umount_module")
 set edit:completion:arg-completer[ip] = (bash-completer:new "ip" &bash_function="_ip ip")
 set edit:completion:arg-completer[iptables] = (bash-completer:new "iptables" &bash_function="_iptables iptables")
 set edit:completion:arg-completer[systemctl] = (bash-completer:new "systemctl" &bash_function="_systemctl systemctl")
