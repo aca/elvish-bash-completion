@@ -51,7 +51,7 @@ source /usr/share/bash-completion/completions/$1 2>/dev/null
 '
     if (eq $platform:os "darwin") {
       set bash_completion_script = "source /usr/local/share/bash-completion/bash_completion
-source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/share/bash-completion/bash_completion/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null
+source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null
 "
     }
 
@@ -67,10 +67,7 @@ isBreak() {
 
 fn=$2
 shift; shift;
-# COMP_CWORD=$1
-shift
 COMPREPLY=()
-# COMP_WORDBREAKS=''"''"''"''><=;|&(:'' 
 COMP_LINE="$@"
 WORDS=($COMP_LINE)
 COMP_WORDS=()
@@ -110,8 +107,8 @@ if [ "${COMP_LINE: -1}" = " " ]; then
 fi
 
 COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
-# declare -p COMP_WORDS >> /tmp/elvisherr
-# echo "COMP_CWORD: $COMP_CWORD" >> /tmp/elvisherr
+# declare -p COMP_WORDS >> /tmp/debug
+# echo "COMP_CWORD: $COMP_CWORD" >> /tmp/debug
 
 COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
@@ -124,9 +121,7 @@ do
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines | each {|n| str:trim-space $n} )]
     var prefix = $cmd[-1]
-    if (eq $completions ['']) {
-    # no match
-    } else {
+    if (not-eq $completions ['']) {
       if (eq $prefix '') {
         put $@completions | put-candidate
       } else {
@@ -143,7 +138,6 @@ done
         }
       }
     }
-
   }
   put $f
 }
