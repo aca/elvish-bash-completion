@@ -10,7 +10,6 @@ use re
 # ignore '--namespace=' if '--namespace' exists.
 fn put-candidate {
   var candidates = [(all)]
-
   for e $candidates {
     if ( eq $e "" ) {
       continue
@@ -37,7 +36,7 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     }
 
     if (eq $bash_function "") {
-      set bash_function = _$name
+      set bash_function = _$name" "$name
     }
 
     if (eq $completion_filename "") {
@@ -58,15 +57,8 @@ source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /us
 "
     }
 
-    # COMP_WORDBREAKS="'@><=;|&(:
-    # TODO: Do we need COMP_WORDBREAKS?
     var completions = [(
   echo $bash_completion_script'
-
-isBreak() {
-  [[ "$1" == "=" ]] || [[ "$1" == ">" ]] || [[ "$1" == "<" ]] || [[ "$1" == ":" ]]
-}
-
 
 fn=$2
 shift; shift;
@@ -76,7 +68,12 @@ WORDS=($COMP_LINE)
 COMP_WORDS=()
 
 # simulate COMP_WORDBREAKS
-# TODO: It might be wrong
+# TODO: should be better way..
+
+isBreak() {
+  [[ "$1" == "=" ]] || [[ "$1" == ">" ]] || [[ "$1" == "<" ]] || [[ "$1" == ":" ]]
+}
+
 for e in "${WORDS[@]}"
 do
   if [[ $e == \''* ]]; then
@@ -121,7 +118,6 @@ do
   echo ${i} | sed -r ''s/\\(.)/\1/g''
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
-# ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines | each {|n| str:trim-space $n} )]
     var prefix = $cmd[-1]
     if (not-eq $completions ['']) {
       if (eq $prefix '') {
@@ -134,7 +130,6 @@ done
             # we should add --namespace= prefix to each completion
             put $@completions | each { |x| put $prefix$x } | put-candidate
           } else {
-            # put $@completions | each {|x| put (edit:complex-candidate $x &code-suffix=' ')}
             put $@completions | put-candidate
           }
         }
