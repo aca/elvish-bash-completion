@@ -12,6 +12,9 @@ fn put-candidate {
   var candidates = [(all)]
 
   for e $candidates {
+    if ( eq $e "" ) {
+      continue
+    }
     if (re:match "=$" $e ) {
       var trimmed = (re:replace '=$' '' $e)
       if (re:match "-.*=$" $e ) {
@@ -114,12 +117,11 @@ COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
 for i in "${COMPREPLY[@]}"
 do
-  # unquote bash string
-  #   "<s>"
-  #   "file with space"
-  echo $(eval "echo $i")
+  # Unquote bash string
+  echo ${i} | sed -r ''s/\\(.)/\1/g''
 done
-' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines | each {|n| str:trim-space $n} )]
+' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
+# ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines | each {|n| str:trim-space $n} )]
     var prefix = $cmd[-1]
     if (not-eq $completions ['']) {
       if (eq $prefix '') {
