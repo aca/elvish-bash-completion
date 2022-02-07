@@ -51,8 +51,7 @@ source /usr/share/bash-completion/completions/$1 2>/dev/null
 '
     if (eq $platform:os "darwin") {
       set bash_completion_script = "source /usr/local/share/bash-completion/bash_completion
-/usr/local/share/bash-completion/completions/$1 2>/dev/null
-/usr/local/share/bash-completion/bash_completion/$1 2>/dev/null
+source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/share/bash-completion/bash_completion/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null
 "
     }
 
