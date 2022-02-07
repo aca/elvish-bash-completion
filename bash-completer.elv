@@ -55,21 +55,63 @@ source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /us
 "
     }
 
+    # COMP_WORDBREAKS="'@><=;|&(:
     # TODO: Do we need COMP_WORDBREAKS?
     var completions = [(
   echo $bash_completion_script'
+
+isBreak() {
+  [[ "$1" == "=" ]] || [[ "$1" == ">" ]] || [[ "$1" == "<" ]] || [[ "$1" == ":" ]]
+}
+
+
 fn=$2
 shift; shift;
-COMP_CWORD=$1
+# COMP_CWORD=$1
 shift
 COMPREPLY=()
-COMP_WORDBREAKS=''"''"''"''><=;|&(:'' 
+# COMP_WORDBREAKS=''"''"''"''><=;|&(:'' 
 COMP_LINE="$@"
-COMP_WORDS=($COMP_LINE)
+WORDS=($COMP_LINE)
+COMP_WORDS=()
+
+# simulate COMP_WORDBREAKS
+# TODO: It might be wrong
+for e in "${WORDS[@]}"
+do
+  if [[ $e == \''* ]]; then
+    COMP_WORDS+=($e)
+  elif [[ $e == \"* ]]; then
+    COMP_WORDS+=($e)
+  else
+    word=""
+    for (( i=0; i<${#e}; i++ )); do
+      ns="${e:$(( i + 1 )):1}"
+      s="${e:$i:1}"
+      if [[ "$ns" == "" ]]; then
+        COMP_WORDS+=("${word}${s}")
+      elif isBreak "$s" && ! isBreak "$ns"; then
+        word="${word}${s}"
+        COMP_WORDS+=(${word})
+        word=""
+      elif isBreak "$ns" && ! isBreak "$s"; then
+        word="${word}${s}"
+        COMP_WORDS+=(${word})
+        word=""
+      else
+        word="${word}${s}"
+      fi
+    done
+  fi
+done
 
 if [ "${COMP_LINE: -1}" = " " ]; then
   COMP_WORDS+=("")
 fi
+
+COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
+# declare -p COMP_WORDS >> /tmp/elvisherr
+# echo "COMP_CWORD: $COMP_CWORD" >> /tmp/elvisherr
 
 COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
