@@ -117,9 +117,12 @@ COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
 for i in "${COMPREPLY[@]}"
 do
-	eval echo $i
+  # unquote bash string
+  #   "<s>"
+  #   "file with space"
+  echo $(eval "echo $i")
 done
-' | bash --norc --noprofile -s $completion_filename $bash_function (- (count $cmd) 1) $@cmd | from-lines | each {|n| str:trim-space $n} )]
+' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines | each {|n| str:trim-space $n} )]
     var prefix = $cmd[-1]
     if (eq $completions ['']) {
     # no match
