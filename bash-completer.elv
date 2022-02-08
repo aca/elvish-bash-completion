@@ -73,16 +73,17 @@ COMP_WORDS=()
 
 # simulate COMP_WORDBREAKS
 # TODO: should be better way..
-
 isBreak() {
-  [[ "$1" == "=" ]] || [[ "$1" == ">" ]] || [[ "$1" == "<" ]] || [[ "$1" == ":" ]]
+  if [[ "$1" == "=" ]] || [[ "$1" == ">" ]] || [[ "$1" == "<" ]] || [[ "$1" == ":" ]]; then
+    echo 0
+  else
+    echo 1
+  fi
 }
 
 for e in "${WORDS[@]}"
 do
-  if [[ $e == \''* ]]; then
-    COMP_WORDS+=($e)
-  elif [[ $e == \"* ]]; then
+  if [[ $e == \''* ]] || [[ $e == \"* ]]; then
     COMP_WORDS+=($e)
   else
     word=""
@@ -91,16 +92,12 @@ do
       s="${e:$i:1}"
       if [[ "$ns" == "" ]]; then
         COMP_WORDS+=("${word}${s}")
-      elif isBreak "$s" && ! isBreak "$ns"; then
+      elif [ $(isBreak "$s") == $(isBreak "$ns") ]; then
         word="${word}${s}"
-        COMP_WORDS+=(${word})
-        word=""
-      elif isBreak "$ns" && ! isBreak "$s"; then
-        word="${word}${s}"
-        COMP_WORDS+=(${word})
-        word=""
       else
         word="${word}${s}"
+        COMP_WORDS+=(${word})
+        word=""
       fi
     done
   fi
@@ -111,8 +108,6 @@ if [ "${COMP_LINE: -1}" = " " ]; then
 fi
 
 COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
-# declare -p COMP_WORDS >> /tmp/debug
-# echo "COMP_CWORD: $COMP_CWORD" >> /tmp/debug
 
 COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
