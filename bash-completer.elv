@@ -14,6 +14,10 @@ fn put-candidate {
     if ( eq $e "" ) {
       continue
     }
+
+    # unquote bash string, let elvish quote
+    set e = (re:replace '\\(.)' '${1}'  $e )
+
     if (re:match "=$" $e ) {
       var trimmed = (re:replace '=$' '' $e)
       if (re:match "-.*=$" $e ) {
@@ -114,8 +118,7 @@ COMP_POINT=${#COMP_LINE}
 $fn 2>/dev/null # elvish is looking for StdErr also
 for i in "${COMPREPLY[@]}"
 do
-  # Unquote bash string
-  echo ${i} | sed -r ''s/\\(.)/\1/g''
+  echo ${i}
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
     var prefix = $cmd[-1]
