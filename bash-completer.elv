@@ -52,11 +52,11 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     # It will be always ssh
     set cmd[0] = $name
 
-    var bash_completion_script = 'source /usr/share/bash-completion/bash_completion
+    var bash_completion_script = 'source /usr/share/bash-completion/bash_completion 2>/dev/null
 source /usr/share/bash-completion/completions/$1 2>/dev/null
 '
     if (eq $platform:os "darwin") {
-      set bash_completion_script = "source /usr/local/share/bash-completion/bash_completion
+      set bash_completion_script = "source /usr/local/share/bash-completion/bash_completion 2>/dev/null
 source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null
 "
     }
