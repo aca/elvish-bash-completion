@@ -3,17 +3,19 @@
 Generalized version of [ezh/elvish-bash-completion](https://github.com/ezh/elvish-bash-completion) with some improvements.
 Provides single function `bash-completer:new`, you can convert any bash completion to elvish.
 
+It includes submodules for bash completions and also tries to find completion in your host searching through
+```
+/usr/share/bash-completion/completions/
+/usr/local/share/bash-completion/completions/
+/usr/local/etc/bash_completion.d/
+```
+
 ## Options
 - `bash_function`: Normally completion bash function is named as "_command command", this option is for commands that doesn't follow this convention.
 - `completion_filename`: Some completion file is named to `fd.bash` instead of `fd` (on MacOS)
 
 ## Install
 ```
-# Instead of including all the completion file, it uses completion files on host.
-# So "bash-completion" should be installed in the system.
-# On macOS, It requires bash-completion@2
-#   brew install bash-completion@2 
-
 epm:install github.com/aca/elvish-bash-completion
 use github.com/aca/elvish-bash-completion/bash-completer
 ```

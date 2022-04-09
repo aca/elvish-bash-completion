@@ -34,6 +34,8 @@ fn put-candidate {
 }
 
 fn new { |&bash_function="" &completion_filename="" name @cmd|
+  use path
+  var src_dir = (path:dir (src)[name])
   var f = {|@cmd|
     if (eq $cmd []) {
       return
@@ -52,18 +54,10 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     # It will be always ssh
     set cmd[0] = $name
 
-    var bash_completion_script = 'source /usr/share/bash-completion/bash_completion 2>/dev/null
-source /usr/share/bash-completion/completions/$1 2>/dev/null
-'
-    if (eq $platform:os "darwin") {
-      set bash_completion_script = "source /usr/local/share/bash-completion/bash_completion 2>/dev/null
-source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null
-"
-    }
+    var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null; source '$src_dir'/bash-completion/completions/$1 2>/dev/null || source /usr/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null || source '$src_dir'/completions/$1 2>/dev/null;'
 
     var completions = [(
   echo $bash_completion_script'
-
 fn=$2
 shift; shift;
 COMPREPLY=()
