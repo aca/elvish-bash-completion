@@ -35,17 +35,18 @@ set edit:completion:arg-completer[iptables] = (bash-completer:new "iptables")
 set edit:completion:arg-completer[tmux] = (bash-completer:new "tmux")
 set edit:completion:arg-completer[fd] = (bash-completer:new "fd")
 set edit:completion:arg-completer[rg] = (bash-completer:new "rg")
-
-# builtin
-set edit:completion:arg-completer[which] = (bash-completer:new "which"  &bash_function="_complete type" &completion_filename="complete")
+set edit:completion:arg-completer[pueue] = (bash-completer:new "pueue")
 
 # for some commands, we need to pass bash_function
-set edit:completion:arg-completer[pkill] = (bash-completer:new "pkill" &bash_function="pgrep")
 set edit:completion:arg-completer[gh] = (bash-completer:new "gh" &bash_function="__start_gh")
+set edit:completion:arg-completer[pkill] = (bash-completer:new "pkill" &bash_function="pgrep")
 set edit:completion:arg-completer[git] = (bash-completer:new "git" &bash_function="__git_wrap__git_main")
 set edit:completion:arg-completer[umount] = (bash-completer:new "umount" &bash_function="_umount_module")
 set edit:completion:arg-completer[systemctl] = (bash-completer:new "systemctl" &bash_function="_systemctl systemctl")
 set edit:completion:arg-completer[virsh] = (bash-completer:new "virsh" &bash_function="_virsh_complete virsh")
+
+# builtin completions
+set edit:completion:arg-completer[which] = (bash-completer:new "which"  &bash_function="_complete type" &completion_filename="complete")
 
 # alias
 set edit:completion:arg-completer[kubectl] = (bash-completer:new "kubectl" &bash_function="__start_kubectl")
