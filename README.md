@@ -33,6 +33,8 @@ set edit:completion:arg-completer[journalctl] = (bash-completer:new "journalctl"
 set edit:completion:arg-completer[tcpdump] = (bash-completer:new "tcpdump")
 set edit:completion:arg-completer[iptables] = (bash-completer:new "iptables")
 set edit:completion:arg-completer[tmux] = (bash-completer:new "tmux")
+set edit:completion:arg-completer[fd] = (bash-completer:new "fd")
+set edit:completion:arg-completer[rg] = (bash-completer:new "rg")
 
 # builtin
 set edit:completion:arg-completer[which] = (bash-completer:new "which"  &bash_function="_complete type" &completion_filename="complete")
@@ -49,12 +51,6 @@ set edit:completion:arg-completer[virsh] = (bash-completer:new "virsh" &bash_fun
 set edit:completion:arg-completer[kubectl] = (bash-completer:new "kubectl" &bash_function="__start_kubectl")
 set edit:completion:arg-completer[k] = $edit:completion:arg-completer[kubectl]
 
-# completion installed in OSX may have different name
-if (eq $platform:os "darwin") {
-    set edit:completion:arg-completer[rg] = (bash-completer:new "rg" &completion_filename="rg.bash")
-    set edit:completion:arg-completer[fd] = (bash-completer:new "fd" &completion_filename="fd.bash")
-} else {
-    set edit:completion:arg-completer[rg] = (bash-completer:new "rg")
-    set edit:completion:arg-completer[fd] = (bash-completer:new "fd")
-}
+# specify completion filename for completions with different name
+# set edit:completion:arg-completer[rg] = (bash-completer:new "rg" &completion_filename="custom_rg_completion")
 ```

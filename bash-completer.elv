@@ -54,7 +54,18 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     # It will be always ssh
     set cmd[0] = $name
 
-    var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null; source '$src_dir'/bash-completion/completions/$1 2>/dev/null || source /usr/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/share/bash-completion/completions/$1 2>/dev/null || source /usr/local/etc/bash_completion.d/$1 2>/dev/null || source '$src_dir'/completions/$1 2>/dev/null;'
+    var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null; 
+source '$src_dir'/bash-completion/completions/$1 2>/dev/null \
+|| source '$src_dir'/bash-completion/completions/$1.bash 2>/dev/null \
+|| source /usr/share/bash-completion/completions/$1 2>/dev/null \
+|| source /usr/share/bash-completion/completions/$1.bash 2>/dev/null \
+|| source /usr/local/share/bash-completion/completions/$1 2>/dev/null \
+|| source /usr/local/share/bash-completion/completions/$1.bash 2>/dev/null \
+|| source /usr/local/etc/bash_completion.d/$1 2>/dev/null \
+|| source /usr/local/etc/bash_completion.d/$1.bash 2>/dev/null \
+|| source '$src_dir'/completions/$1 2>/dev/null \
+|| source '$src_dir'/completions/$1.bash 2>/dev/null;
+'
 
     var completions = [(
   echo $bash_completion_script'
