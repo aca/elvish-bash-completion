@@ -23,6 +23,8 @@ git clone --recurse-submodules https://github.com/aca/elvish-bash-completion ~/.
 
 ## Usage
 ```
+use github.com/aca/elvish-bash-completion/bash-completer
+
 set edit:completion:arg-completer[ssh] = (bash-completer:new "ssh")
 set edit:completion:arg-completer[scp] = (bash-completer:new "scp")
 set edit:completion:arg-completer[curl] = (bash-completer:new "curl")
