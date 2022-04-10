@@ -32,6 +32,7 @@ set edit:completion:arg-completer[ip] = (bash-completer:new "ip")
 set edit:completion:arg-completer[journalctl] = (bash-completer:new "journalctl")
 set edit:completion:arg-completer[tcpdump] = (bash-completer:new "tcpdump")
 set edit:completion:arg-completer[iptables] = (bash-completer:new "iptables")
+set edit:completion:arg-completer[tmux] = (bash-completer:new "tmux")
 
 # builtin
 set edit:completion:arg-completer[which] = (bash-completer:new "which"  &bash_function="_complete type" &completion_filename="complete")
