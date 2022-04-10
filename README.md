@@ -15,9 +15,10 @@ It includes submodules for bash completions and also tries to find completion in
 - `completion_filename`: Some completion file is named to `fd.bash` instead of `fd` (on MacOS)
 
 ## Install
+
 ```
-epm:install github.com/aca/elvish-bash-completion
-use github.com/aca/elvish-bash-completion/bash-completer
+# This library includes submodules we can't use epm but we can still install in the same directory.
+git clone --recurse-submodules https://github.com/aca/elvish-bash-completion ~/.local/share/elvish/lib/github.com/aca/elvish-bash-completion
 ```
 
 ## Usage
