@@ -22,6 +22,8 @@ git clone --recurse-submodules https://github.com/aca/elvish-bash-completion ~/.
 ```
 
 ## Usage
+
+You might want to check my [configs](https://github.com/aca/dotfiles/blob/master/.config/elvish/lib/completion.elv) for more.
 ```
 use github.com/aca/elvish-bash-completion/bash-completer
 
