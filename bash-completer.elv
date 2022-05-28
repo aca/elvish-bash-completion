@@ -9,6 +9,7 @@ use re
 # filter completion candidates
 # ignore '--namespace=' if '--namespace' exists.
 fn put-candidate {
+  use path
   var candidates = [(all)]
   for e $candidates {
     if ( eq $e "" ) {
@@ -28,7 +29,11 @@ fn put-candidate {
         put (edit:complex-candidate $trimmed &code-suffix='=')
       }
     } else {
-      put (edit:complex-candidate $e &code-suffix=' ')
+      if (and (re:match "/$" $e) (path:is-dir &follow-symlink=$true $e))  {
+        put (edit:complex-candidate $e &code-suffix='')
+      } else {
+        put (edit:complex-candidate $e &code-suffix=' ')
+      }
     }
   }
 }
@@ -114,12 +119,17 @@ if [ "${COMP_LINE: -1}" = " " ]; then
 fi
 
 COMP_CWORD=$((${#COMP_WORDS[@]} - 1))
-
 COMP_POINT=${#COMP_LINE}
+
 $fn 2>/dev/null # elvish is looking for StdErr also
+
 for i in "${COMPREPLY[@]}"
 do
-  echo ${i}
+  if [[ -d "${i}" && "${i}" != */ ]]; then
+    echo "${i}/"
+  else 
+    echo "${i}" 
+  fi
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
     var prefix = $cmd[-1]
