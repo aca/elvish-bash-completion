@@ -19,6 +19,9 @@ fn put-candidate {
     # unquote bash string, let elvish quote
     set e = (re:replace '\\(.)' '${1}'  $e )
 
+    # remove space at the end (which makes quotes)
+    set e = (re:replace '(.*)\s+' '${1}'  $e )
+
     if (re:match "=$" $e ) {
       var trimmed = (re:replace '=$' '' $e)
       if (re:match "-.*=$" $e ) {
