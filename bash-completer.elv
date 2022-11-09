@@ -67,11 +67,18 @@ source '$src_dir'/bash-completion/completions/$1 2>/dev/null \
 || source '$src_dir'/bash-completion/completions/$1.bash 2>/dev/null \
 || source /usr/share/bash-completion/completions/$1 2>/dev/null \
 || source /usr/share/bash-completion/completions/$1.bash 2>/dev/null \
+
 || source /usr/local/share/bash-completion/completions/$1 2>/dev/null \
 || source /usr/local/share/bash-completion/completions/$1.bash 2>/dev/null \
+
 || source /usr/local/etc/bash_completion.d/$1 2>/dev/null \
 || source /usr/local/etc/bash_completion.d/$1.bash 2>/dev/null \
 || source /usr/local/etc/bash_completion.d/$1-completion.bash 2>/dev/null \
+
+|| source /opt/homebrew/etc/bash_completion.d/$1 2>/dev/null \
+|| source /opt/homebrew/etc/bash_completion.d/$1.bash 2>/dev/null \
+|| source /opt/homebrew/etc/bash_completion.d/$1-completion.bash 2>/dev/null \
+
 || source '$src_dir'/completions/$1 2>/dev/null \
 || source '$src_dir'/completions/$1.bash 2>/dev/null;
 '
