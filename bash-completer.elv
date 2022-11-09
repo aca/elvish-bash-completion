@@ -62,23 +62,19 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     # It will be always ssh
     set cmd[0] = $name
 
-    var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null; 
+    var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null;
 source '$src_dir'/bash-completion/completions/$1 2>/dev/null \
 || source '$src_dir'/bash-completion/completions/$1.bash 2>/dev/null \
 || source /usr/share/bash-completion/completions/$1 2>/dev/null \
 || source /usr/share/bash-completion/completions/$1.bash 2>/dev/null \
-
 || source /usr/local/share/bash-completion/completions/$1 2>/dev/null \
 || source /usr/local/share/bash-completion/completions/$1.bash 2>/dev/null \
-
 || source /usr/local/etc/bash_completion.d/$1 2>/dev/null \
 || source /usr/local/etc/bash_completion.d/$1.bash 2>/dev/null \
 || source /usr/local/etc/bash_completion.d/$1-completion.bash 2>/dev/null \
-
 || source /opt/homebrew/etc/bash_completion.d/$1 2>/dev/null \
 || source /opt/homebrew/etc/bash_completion.d/$1.bash 2>/dev/null \
 || source /opt/homebrew/etc/bash_completion.d/$1-completion.bash 2>/dev/null \
-
 || source '$src_dir'/completions/$1 2>/dev/null \
 || source '$src_dir'/completions/$1.bash 2>/dev/null;
 '
@@ -137,8 +133,8 @@ for i in "${COMPREPLY[@]}"
 do
   if [[ -d "${i}" && "${i}" != */ ]]; then
     echo "${i}/"
-  else 
-    echo "${i}" 
+  else
+    echo "${i}"
   fi
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
