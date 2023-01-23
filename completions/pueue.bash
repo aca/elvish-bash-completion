@@ -8,78 +8,171 @@ _pueue() {
 
     for i in ${COMP_WORDS[@]}
     do
-        case "${i}" in
-            "$1")
+        case "${cmd},${i}" in
+            ",$1")
                 cmd="pueue"
                 ;;
-            add)
-                cmd+="__add"
+            Pueue client,add)
+                cmd="Pueue client__add"
                 ;;
-            clean)
-                cmd+="__clean"
+            Pueue client,clean)
+                cmd="Pueue client__clean"
                 ;;
-            completions)
-                cmd+="__completions"
+            Pueue client,completions)
+                cmd="Pueue client__completions"
                 ;;
-            edit)
-                cmd+="__edit"
+            Pueue client,edit)
+                cmd="Pueue client__edit"
                 ;;
-            enqueue)
-                cmd+="__enqueue"
+            Pueue client,enqueue)
+                cmd="Pueue client__enqueue"
                 ;;
-            follow)
-                cmd+="__follow"
+            Pueue client,follow)
+                cmd="Pueue client__follow"
                 ;;
-            format-status)
-                cmd+="__format__status"
+            Pueue client,format-status)
+                cmd="Pueue client__format__status"
                 ;;
-            group)
-                cmd+="__group"
+            Pueue client,group)
+                cmd="Pueue client__group"
                 ;;
-            help)
-                cmd+="__help"
+            Pueue client,help)
+                cmd="Pueue client__help"
                 ;;
-            kill)
-                cmd+="__kill"
+            Pueue client,kill)
+                cmd="Pueue client__kill"
                 ;;
-            log)
-                cmd+="__log"
+            Pueue client,log)
+                cmd="Pueue client__log"
                 ;;
-            parallel)
-                cmd+="__parallel"
+            Pueue client,parallel)
+                cmd="Pueue client__parallel"
                 ;;
-            pause)
-                cmd+="__pause"
+            Pueue client,pause)
+                cmd="Pueue client__pause"
                 ;;
-            remove)
-                cmd+="__remove"
+            Pueue client,remove)
+                cmd="Pueue client__remove"
                 ;;
-            reset)
-                cmd+="__reset"
+            Pueue client,reset)
+                cmd="Pueue client__reset"
                 ;;
-            restart)
-                cmd+="__restart"
+            Pueue client,restart)
+                cmd="Pueue client__restart"
                 ;;
-            send)
-                cmd+="__send"
+            Pueue client,send)
+                cmd="Pueue client__send"
                 ;;
-            shutdown)
-                cmd+="__shutdown"
+            Pueue client,shutdown)
+                cmd="Pueue client__shutdown"
                 ;;
-            start)
-                cmd+="__start"
+            Pueue client,start)
+                cmd="Pueue client__start"
                 ;;
-            stash)
-                cmd+="__stash"
+            Pueue client,stash)
+                cmd="Pueue client__stash"
                 ;;
-            status)
-                cmd+="__status"
+            Pueue client,status)
+                cmd="Pueue client__status"
                 ;;
-            switch)
-                cmd+="__switch"
+            Pueue client,switch)
+                cmd="Pueue client__switch"
                 ;;
-            wait)
-                cmd+="__wait"
+            Pueue client,wait)
+                cmd="Pueue client__wait"
+                ;;
+            Pueue client__group,add)
+                cmd="Pueue client__group__add"
+                ;;
+            Pueue client__group,help)
+                cmd="Pueue client__group__help"
+                ;;
+            Pueue client__group,remove)
+                cmd="Pueue client__group__remove"
+                ;;
+            Pueue client__group__help,add)
+                cmd="Pueue client__group__help__add"
+                ;;
+            Pueue client__group__help,help)
+                cmd="Pueue client__group__help__help"
+                ;;
+            Pueue client__group__help,remove)
+                cmd="Pueue client__group__help__remove"
+                ;;
+            Pueue client__help,add)
+                cmd="Pueue client__help__add"
+                ;;
+            Pueue client__help,clean)
+                cmd="Pueue client__help__clean"
+                ;;
+            Pueue client__help,completions)
+                cmd="Pueue client__help__completions"
+                ;;
+            Pueue client__help,edit)
+                cmd="Pueue client__help__edit"
+                ;;
+            Pueue client__help,enqueue)
+                cmd="Pueue client__help__enqueue"
+                ;;
+            Pueue client__help,follow)
+                cmd="Pueue client__help__follow"
+                ;;
+            Pueue client__help,format-status)
+                cmd="Pueue client__help__format__status"
+                ;;
+            Pueue client__help,group)
+                cmd="Pueue client__help__group"
+                ;;
+            Pueue client__help,help)
+                cmd="Pueue client__help__help"
+                ;;
+            Pueue client__help,kill)
+                cmd="Pueue client__help__kill"
+                ;;
+            Pueue client__help,log)
+                cmd="Pueue client__help__log"
+                ;;
+            Pueue client__help,parallel)
+                cmd="Pueue client__help__parallel"
+                ;;
+            Pueue client__help,pause)
+                cmd="Pueue client__help__pause"
+                ;;
+            Pueue client__help,remove)
+                cmd="Pueue client__help__remove"
+                ;;
+            Pueue client__help,reset)
+                cmd="Pueue client__help__reset"
+                ;;
+            Pueue client__help,restart)
+                cmd="Pueue client__help__restart"
+                ;;
+            Pueue client__help,send)
+                cmd="Pueue client__help__send"
+                ;;
+            Pueue client__help,shutdown)
+                cmd="Pueue client__help__shutdown"
+                ;;
+            Pueue client__help,start)
+                cmd="Pueue client__help__start"
+                ;;
+            Pueue client__help,stash)
+                cmd="Pueue client__help__stash"
+                ;;
+            Pueue client__help,status)
+                cmd="Pueue client__help__status"
+                ;;
+            Pueue client__help,switch)
+                cmd="Pueue client__help__switch"
+                ;;
+            Pueue client__help,wait)
+                cmd="Pueue client__help__wait"
+                ;;
+            Pueue client__help__group,add)
+                cmd="Pueue client__help__group__add"
+                ;;
+            Pueue client__help__group,remove)
+                cmd="Pueue client__help__group__remove"
                 ;;
             *)
                 ;;
@@ -88,12 +181,16 @@ _pueue() {
 
     case "${cmd}" in
         pueue)
-            opts="-h -V -v -c -p --help --version --verbose --config --profile add remove switch stash enqueue start restart pause kill send edit group status format-status log follow wait clean reset shutdown parallel completions help"
+            opts="-v -c -p -h -V --verbose --color --config --profile --help --version add remove switch stash enqueue start restart pause kill send edit group status format-status log follow wait clean reset shutdown parallel completions help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
+                --color)
+                    COMPREPLY=($(compgen -W "auto never always" -- "${cur}"))
+                    return 0
+                    ;;
                 --config)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
@@ -208,7 +305,7 @@ _pueue() {
             return 0
             ;;
         pueue__edit)
-            opts="-p -h --path --help <TASK_ID>"
+            opts="-c -p -l -h --command --path --label --help <TASK_ID>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -222,7 +319,7 @@ _pueue() {
             return 0
             ;;
         pueue__enqueue)
-            opts="-d -h --delay --help <TASK_IDS>..."
+            opts="-d -h --delay --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -244,7 +341,7 @@ _pueue() {
             return 0
             ;;
         pueue__follow)
-            opts="-l -h --lines --help <TASK_ID>"
+            opts="-l -h --lines --help [TASK_ID]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -302,7 +399,7 @@ _pueue() {
             return 0
             ;;
         pueue__group__add)
-            opts="-p -h --version --parallel --help <NAME>"
+            opts="-p -h --parallel --help <NAME>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -324,7 +421,7 @@ _pueue() {
             return 0
             ;;
         pueue__group__help)
-            opts="-h --version --help <SUBCOMMAND>..."
+            opts="add remove help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -337,8 +434,50 @@ _pueue() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
+        pueue__group__help__add)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__group__help__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__group__help__remove)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
         pueue__group__remove)
-            opts="-h --version --help <NAME>"
+            opts="-h --help <NAME>"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -352,7 +491,7 @@ _pueue() {
             return 0
             ;;
         pueue__help)
-            opts="<SUBCOMMAND>..."
+            opts="add remove switch stash enqueue start restart pause kill send edit group status format-status log follow wait clean reset shutdown parallel completions help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -365,8 +504,358 @@ _pueue() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
+        pueue__help__add)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__clean)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__completions)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__edit)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__enqueue)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__follow)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__format__status)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__group)
+            opts="add remove"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__group__add)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__group__remove)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__help)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__kill)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__log)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__parallel)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__pause)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__remove)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__reset)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__restart)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__send)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__shutdown)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__start)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__stash)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__status)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__switch)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        pueue__help__wait)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
         pueue__kill)
-            opts="-g -a -c -s -h --group --all --children --signal --help <TASK_IDS>..."
+            opts="-g -a -c -s -h --group --all --children --signal --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -396,7 +885,7 @@ _pueue() {
             return 0
             ;;
         pueue__log)
-            opts="-j -l -f -h --json --lines --full --help <TASK_IDS>..."
+            opts="-j -l -f -h --json --lines --full --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -418,7 +907,7 @@ _pueue() {
             return 0
             ;;
         pueue__parallel)
-            opts="-g -h --group --help <PARALLEL_TASKS>"
+            opts="-g -h --group --help [PARALLEL_TASKS]"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -440,7 +929,7 @@ _pueue() {
             return 0
             ;;
         pueue__pause)
-            opts="-g -a -w -c -h --group --all --wait --children --help <TASK_IDS>..."
+            opts="-g -a -w -c -h --group --all --wait --children --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -490,7 +979,7 @@ _pueue() {
             return 0
             ;;
         pueue__restart)
-            opts="-a -g -k -s -i -e -p -h --all-failed --failed-in-group --start-immediately --stashed --in-place --not-in-place --edit --edit-path --help <TASK_IDS>..."
+            opts="-a -g -k -s -i -e -p -l -h --all-failed --failed-in-group --start-immediately --stashed --in-place --not-in-place --edit --edit-path --edit-label --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -540,7 +1029,7 @@ _pueue() {
             return 0
             ;;
         pueue__start)
-            opts="-g -a -c -h --group --all --children --help <TASK_IDS>..."
+            opts="-g -a -c -h --group --all --children --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -576,7 +1065,7 @@ _pueue() {
             return 0
             ;;
         pueue__status)
-            opts="-j -g -h --json --group --help"
+            opts="-j -g -h --json --group --help [QUERY]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -612,7 +1101,7 @@ _pueue() {
             return 0
             ;;
         pueue__wait)
-            opts="-g -a -q -h --group --all --quiet --help <TASK_IDS>..."
+            opts="-g -a -q -h --group --all --quiet --help [TASK_IDS]..."
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0

@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# gh
+kubectl completion bash > completions/kubectl.bash
 gh completion -s bash > ./completions/gh
-
-# pueue
 pueue completions bash ./completions
