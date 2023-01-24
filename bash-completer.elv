@@ -138,23 +138,30 @@ do
   fi
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
-    var prefix = $cmd[-1]
-    if (not-eq $completions ['']) {
-      if (eq $prefix '') {
-        put $@completions | put-candidate
-      } else {
-        if (not-eq $completions []) {
-          if (eq [] (each {|n| if (str:has-prefix $n $prefix) { put $n }} $completions)) {
-            # no shared prefix
-            # for example kubectl --namespace= will return list of namespaces
-            # we should add --namespace= prefix to each completion
-            put $@completions | each { |x| put $prefix$x } | put-candidate
-          } else {
+
+    notify-send "count"(count $completions) 
+    if (eq (count $completions) (num 0)) {
+        ls -1U
+    } else {
+        var prefix = $cmd[-1]
+        if (not-eq $completions ['']) {
+          if (eq $prefix '') {
             put $@completions | put-candidate
+          } else {
+            if (not-eq $completions []) {
+              if (eq [] (each {|n| if (str:has-prefix $n $prefix) { put $n }} $completions)) {
+                # no shared prefix
+                # for example kubectl --namespace= will return list of namespaces
+                # we should add --namespace= prefix to each completion
+                put $@completions | each { |x| put $prefix$x } | put-candidate
+              } else {
+                put $@completions | put-candidate
+              }
+            }
           }
         }
-      }
     }
+
   }
   put $f
 }
