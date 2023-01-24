@@ -139,7 +139,6 @@ do
 done
 ' | bash --norc --noprofile -s $completion_filename $bash_function $@cmd | from-lines )]
 
-    notify-send "count"(count $completions) 
     if (eq (count $completions) (num 0)) {
         ls -1U
     } else {
