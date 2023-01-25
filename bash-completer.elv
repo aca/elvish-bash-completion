@@ -98,9 +98,26 @@ isBreak() {
   fi
 }
 
+# echo "${WORDS[@]}" | notify-send "$(cat -)"
+# dumpArray() {
+#     local -n _ary=$1
+#     local _idx
+#     local -i _idlen=0
+#     for _idx in "${!_ary[@]}"; do
+#         _idlen=" ${#_idx} >_idlen ? ${#_idx} : _idlen "
+#     done
+#     for _idx in "${!_ary[@]}"; do
+#         printf "%-*s: %s\n" "$_idlen" "$_idx" \
+#             "|${_ary["$_idx"]//$''\n''/$''\n\e[''${_idlen}C: }|"
+#     done
+# }
+# 
+# dumpArray WORDS | notify-send "$(cat -)"
+
 for e in "${WORDS[@]}"
 do
   if [[ $e == \''* ]] || [[ $e == \"* ]]; then
+    # quoted words 
     COMP_WORDS+=($e)
   else
     word=""
