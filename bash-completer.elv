@@ -62,6 +62,7 @@ fn new { |&bash_function="" &completion_filename="" name @cmd|
     # It will be always ssh
     set cmd[0] = $name
 
+    # var bash_completion_script = 'source /opt/homebrew/Cellar/bash-completion@2/2.11/share/bash-completion/bash_completion;
     var bash_completion_script = 'source '$src_dir'/bash-completion/bash_completion 2>/dev/null;
 source '$src_dir'/bash-completion/completions/$1 2>/dev/null \
 || source '$src_dir'/bash-completion/completions/$1.bash 2>/dev/null \
